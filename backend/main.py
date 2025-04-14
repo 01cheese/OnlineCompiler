@@ -18,6 +18,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/")
+def root():
+    return {"message": "Hello from FastAPI"}
 
 @app.post("/execute")
 async def execute_code(request: dict, background_tasks: BackgroundTasks):
