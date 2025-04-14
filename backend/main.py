@@ -1,5 +1,5 @@
 import logging
-import aioredis
+import redis.asyncio as aioredis
 from fastapi import FastAPI, WebSocket, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from celery.result import AsyncResult
