@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  backend:
+    build: .
+    container_name: backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+  celery:
+    build: .
+    container_name: celery_worker
+    command: celery -A celery_worker.celery_app worker --loglevel=info
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7
+    container_name: redis
+
+  sandbox_python:
+    build:
+      context: ./sandbox/python
+    container_name: sandbox_python
+
+  sandbox_cpp:
+    build:
+      context: ./sandbox/cpp
+    container_name: sandbox_cpp
+
+  sandbox_js:
+    build:
+      context: ./sandbox/js
+    container_name: sandbox_js
