@@ -4,7 +4,3 @@ celery
 redis
 aioredis
 psutil
-ast
-logging
-subprocess
-json
