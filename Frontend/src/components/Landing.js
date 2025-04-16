@@ -101,8 +101,7 @@ const Landing = () => {
                 await new Promise((resolve) => setTimeout(resolve, 1000)); // Ждём 1 сек
 
                 const resultResponse = await axios.get(`https://backend-compiler.vzbb.site/result/${taskId}`);
-
-                if (resultResponse.data.status === "finished") {
+                if (resultResponse.data.status !== "processing") {
                     result = resultResponse.data;
                     break;
                 } else if (resultResponse.data.status === "failed") {
