@@ -61,10 +61,12 @@ async def websocket_endpoint(websocket: WebSocket, task_id: str):
     ch = res[0]
 
     try:
-        while await ch.wait_message():
-            msg = await ch.get_json()
-            await websocket.send_json(msg)
-            break
+        for _ in range(10):  # max 5 секунд ожидания
+            if await ch.wait_message():
+                msg = await ch.get_json()
+                await websocket.send_json(msg)
+                break
+            await asyncio.sleep(0.5)
     except Exception as e:
         await websocket.send_json({"status": "error", "output": f"WebSocket error: {str(e)}"})
     finally:
