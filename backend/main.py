@@ -56,7 +56,7 @@ async def websocket_endpoint(websocket: WebSocket, task_id: str):
     """WebSocket for Redis Pub/Sub"""
     await websocket.accept()
 
-    redis = await aioredis.create_redis("redis://localhost:6379/1")
+    redis = await aioredis.create_redis("redis://redis:6379/1")
     res = await redis.subscribe(f"task:{task_id}")
     ch = res[0]
 
