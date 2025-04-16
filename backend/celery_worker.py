@@ -32,4 +32,6 @@ def execute_task(self, request):
         }
 
     redis_pub.publish(f"task:{self.request.id}", json.dumps(result))
+    print("Publishing to Redis channel:", f"task:{self.request.id}")
+    print("Message:", result)
     return result
