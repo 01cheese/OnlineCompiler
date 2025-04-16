@@ -89,7 +89,7 @@ const Landing = () => {
         };
 
         try {
-            const response = await axios.post("http://localhost:8000/execute", payload, {
+            const response = await axios.post("https://backend-compiler.vzbb.site/execute", payload, {
                 headers: {"Content-Type": "application/json"}
             });
 
@@ -100,7 +100,7 @@ const Landing = () => {
             while (attempts > 0) {
                 await new Promise((resolve) => setTimeout(resolve, 1000)); // Ждём 1 сек
 
-                const resultResponse = await axios.get(`http://localhost:8000/result/${taskId}`);
+                const resultResponse = await axios.get(`https://backend-compiler.vzbb.site/result/${taskId}`);
 
                 if (resultResponse.data.status === "finished") {
                     result = resultResponse.data;
