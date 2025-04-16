@@ -11,7 +11,7 @@ const CustomInput = ({ customInput, setCustomInput }) => {
                 rows="5"
                 value={customInput}
                 onChange={(e) => setCustomInput(e.target.value)}
-                placeholder="Custom Input / This window will be available later, currently the war is on with Docker"
+                placeholder="Custom Input / This window will be available later, currently the war is on with Docker)"
             ></textarea>
         </>
     )
