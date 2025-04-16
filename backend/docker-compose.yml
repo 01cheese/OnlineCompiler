@@ -27,15 +27,15 @@ services:
 
   sandbox_python:
     build:
-      context: ./sandbox/python
+      context: ./sandbox/Python
     container_name: sandbox_python
 
   sandbox_cpp:
     build:
-      context: ./sandbox/cpp
+      context: ./sandbox/Cpp
     container_name: sandbox_cpp
 
   sandbox_js:
     build:
-      context: ./sandbox/js
+      context: ./sandbox/JS
     container_name: sandbox_js
